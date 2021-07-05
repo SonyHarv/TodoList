@@ -39,3 +39,18 @@ txtInput.addEventListener('keyup', (event) => {
     txtInput.value = '';
   }
 })
+
+divTodoList.addEventListener('click', (event) => {
+
+  const nombreElemento = event.target.localName; // nombre del elemento--input,label,buttom
+  const todoElemento =  event.target.parentElement.parentElement;
+  const todoId= todoElemento.getAttribute('data-id')
+
+  if(nombreElemento.includes('input')){
+    todoList.marcarCompletado(todoId);
+    todoElemento.classList.toggle('completed');
+  }
+
+  console.log(todoList);
+
+});
