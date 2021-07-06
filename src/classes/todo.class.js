@@ -1,4 +1,16 @@
+import { crearTodoHtml } from "../js/components";
+
 export class Todo{
+
+  static fromJsom({id,tarea,completado,creado}) {
+    const tempTodo = new Todo(tarea);
+
+    tempTodo.id = id;
+    tempTodo.completado= completado;
+    tempTodo.creado = creado;
+
+    return tempTodo;
+  };
 
   constructor(tarea){
 

@@ -25,3 +25,7 @@ export const todoList = new TodoList();
 todoList.todos.forEach(todo => {
   crearTodoHtml(todo);
 });
+// todoList.todos.forEach(crearTodoHtml); //otra forma de foreach cuando solo hay un solo argumento
+
+
+console.log('todos: ', todoList.todos);

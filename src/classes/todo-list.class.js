@@ -1,3 +1,5 @@
+import { Todo } from "./todo.class";
+
 export class TodoList{
 
   constructor(){
@@ -51,6 +53,9 @@ localStorage.setItem('todo',JSON.stringify(this.todos));
                   :[]);
 
     console.log(this.todos);
+
+    this.todos = this.todos.map(obj  => Todo.fromJsom(obj));
+    // this.todos = this.todos.map(Todo.fromJsom); //otra forma de map cuando solo hay un solo argumento
 
   }
 
