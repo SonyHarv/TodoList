@@ -1,5 +1,8 @@
 import { Todo } from "./todo.class";
 
+
+const taskCount = document.querySelector('strong');
+
 export class TodoList{
 
   constructor(){
@@ -9,11 +12,13 @@ export class TodoList{
 
   nuevoTodo (todo){
     this.todos.push(todo);
+    this.counterTask(this.todos);
     this.guardarLocalStorage();
   }
 
   eliminarTodo(id){
-    this.todos = this.todos.filter(todo  => todo.id != id)
+    this.todos = this.todos.filter(todo  => todo.id != id);
+    this.counterTask(this.todos);
     this.guardarLocalStorage();
   }
 
@@ -21,6 +26,7 @@ export class TodoList{
     for(const todo of this.todos){
       if(todo.id == id){
         todo.completado = !todo.completado;
+        this.counterTask(this.todos);
         this.guardarLocalStorage();
         break;
       }
@@ -29,6 +35,7 @@ export class TodoList{
 
   eliminarCompletados(){
         this.todos = this.todos.filter(todo  => !todo.completado)
+        this.counterTask(this.todos);
         this.guardarLocalStorage();
   }
 
@@ -52,11 +59,23 @@ localStorage.setItem('todo',JSON.stringify(this.todos));
                   ?(JSON.parse(localStorage.getItem('todo')))
                   :[]);
 
-    console.log(this.todos);
+    // console.log(this.todos);
+
+    this.counterTask(this.todos);
 
     this.todos = this.todos.map(obj  => Todo.fromJsom(obj));
     // this.todos = this.todos.map(Todo.fromJsom); //otra forma de map cuando solo hay un solo argumento
 
+  }
+
+  counterTask(){
+    let pendientes = 0;
+    this.todos.forEach(todo => {
+      if(!(todo.completado)){
+        pendientes++;
+      }
+      return taskCount.innerText = pendientes;
+    });
   }
 
 }

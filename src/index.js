@@ -28,4 +28,4 @@ todoList.todos.forEach(todo => {
 // todoList.todos.forEach(crearTodoHtml); //otra forma de foreach cuando solo hay un solo argumento
 
 
-console.log('todos: ', todoList.todos);
+// console.log('todos: ', todoList.todos);
